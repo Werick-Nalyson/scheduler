@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  scheduler_database:
+    image: postgres
+    container_name: scheduler_database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=scheduler
+      - POSTGRES_DB=scheduler
+    volumes:
+      - pgdata:/data/postgres
+  
+  adminer:
+    image: adminer
+    container_name: scheduler_adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
+    driver: local
