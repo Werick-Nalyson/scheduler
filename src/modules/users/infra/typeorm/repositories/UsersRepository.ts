@@ -1,13 +1,14 @@
 import { ICreateUserDTO } from "src/modules/users/dtos/ICreateUserDTO";
 import { IUsersRepository } from "src/modules/users/repositories/IUsersRepository";
-import { User } from "src/modules/users/infra/typeorm/entities/User";
-import { getRepository, Repository } from "typeorm";
+import { User } from "../entities/User";
+import { Repository } from "typeorm";
+import { AppDataSource } from "../../../../../config/typeorm.config";
 
 class UsersRepository implements IUsersRepository {
     private repository: Repository<User>;
 
     constructor () {
-        this.repository = getRepository(User)
+        this.repository = AppDataSource.getRepository(User)
     }
 
     async create ({
@@ -15,12 +16,14 @@ class UsersRepository implements IUsersRepository {
         email,
         telephone,
         isWhatsapp,
-    }: ICreateUserDTO): Promise<User | User[]> {
+        active
+    }: ICreateUserDTO): Promise<User> {
         const createUser = this.repository.create({
             name,
             email,
             telephone,
             isWhatsapp,
+            active
         })
         
         const user = await this.repository.save(createUser)

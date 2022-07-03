@@ -1,3 +1,4 @@
+import { User } from "../modules/users/infra/typeorm/entities/User";
 import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
@@ -8,7 +9,7 @@ export const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     synchronize: true,
-    entities: [],
+    entities: [User],
 })
 
 export function createConnection () {

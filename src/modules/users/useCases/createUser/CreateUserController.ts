@@ -17,7 +17,8 @@ class CreateUserController {
             name,
             email,
             isWhatsapp,
-            telephone
+            telephone,
+            active: false
         });
     
         return response.status(201).json(user);
