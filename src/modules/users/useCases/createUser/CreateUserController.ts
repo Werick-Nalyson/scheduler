@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { CreateUserUseCase } from "./createUserUseCase";
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
