@@ -18,7 +18,7 @@ export class User extends BaseEntity {
     active: boolean;
 
     @Column()
-    isWhatsapp: string;
+    isWhatsapp: boolean;
 
     @CreateDateColumn()
     createdAt: Date;

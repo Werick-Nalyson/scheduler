@@ -3,7 +3,7 @@ interface ICreateUserDTO {
     name: string;
     email: string;
     telephone: string;
-    active: boolean;
+    active?: boolean;
     isWhatsapp: boolean;
 }
 
