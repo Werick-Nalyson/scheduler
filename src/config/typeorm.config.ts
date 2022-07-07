@@ -1,5 +1,6 @@
 import { User } from "../modules/users/infra/typeorm/entities/User";
 import { DataSource } from "typeorm";
+import { Scheduler } from "../modules/schedules/infra/typeorm/entities/Scheduler";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -9,7 +10,7 @@ export const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     synchronize: true,
-    entities: [User],
+    entities: [User, Scheduler],
 })
 
 export function createConnection () {
